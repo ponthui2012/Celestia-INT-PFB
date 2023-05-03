@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celestia & Reguide | PayForBlob Bonus</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'css/styles.css') }}">
+
+</head>
+
+<body>
+  <header class="header-container flex">
+    <div class="header_badge flex row"><img src="{{ url_for('static', filename= 'img/celestia-logo.svg') }}" alt="Celestia Logo"> | PayForBlob
+    </div>
+
+    <div class="header_menu flex">
+
+      <div class="task--bonus"><a href="#">Task bonus 1</a></div>
+      <div class="task--bonus"><a href="#">Task bonus 2</a></div>
+      <div class="task--bonus"><a href="#">Task bonus 3</a></div>
+      <div class="header_node_status" title="rpc_url">Load status...</div>
+
+    </div>
+  </header>
+  <div class="container">
+
+
+
+    <div class="flex celestia-container">
+      <form method="get" class="transaction__data">
+        <h2>Submit a PFB transaction</h2>
+        <br>
+        <div class="form_field_container">
+          <span class="form_field_label">Data</span>
+          <textarea name="tx_data" class="form_field_textarea" placeholder="Your data to blockchain"
+            required></textarea>
+        </div>
+        <div class="form_rows_container flex">
+
+          <div class="form_field_container">
+            <span class="form_field_label">Fee</span>
+            <input name="tx_fee" class="form_field_input" type="number" value="{{ fee }}" min="1" placeholder="Fee"
+              required>
+          </div>
+
+          <div class="form_field_container">
+            <span class="form_field_label">Gas limit</span>
+            <input name="tx_gas_limit" class="form_field_input" type="number" value="{{ gas_limit }}" min="1"
+              placeholder="Gas limit" required>
+          </div>
+
+        </div>
+        <div class="form_field_container">
+          <span class="form_field_label">Node</span>
+          <input name="tx_node_url" class="form_field_input" type="url" value="{{ node_url }}" placeholder="Node url"
+            required>
+        </div>
+        <button class="form_button">Send data</button>
+        <!-- inactive -->
+      </form>
+
+      <div class="transaction__hash" style="display: block;">
+        <h2>Transaction result</h2>
+        <div class="data">
+          <div class="transaction_row ">
+            <div class="transaction_row_data">
+              <div><span>Date and Time:</span></div>
+              <span id="result_date"></span>
+            </div>
+            <div class="transaction_row_data">
+              <div><span>Namespace ID:</span></div>
+              <span id="result_namespace_id"></span>
+            </div>
+            <div class="transaction_row_data">
+              <div><span>Height:</span></div>
+              <span id="result_height"></span>
+            </div>
+            <div class="transaction_row_data">
+              <div><span>Gas wanted:</span></div>
+              <span id="result_gas_wanted"></span>
+            </div>
+            <div class="transaction_row_data">
+              <div><span>Gas used:</span></div>
+              <span id="result_gas_used"></span>
+            </div>
+            <div class="transaction_row_data">
+              <div><span>Code:</span></div>
+              <span id="result_code"></span>
+            </div>
+          </div>
+          <div class="transaction_info_item">
+            <div class="tx_title"><span>Data:</span></div>
+            <div>
+              <small><span class="badge">text</span></small>
+              <span id="result_decode_data"></span>
+            </div>
+            <div>
+              <small><span class="badge badge_orange">hex</span></small> <span id="result_encode_data"></span>
+            </div>
+          </div>
+          <div class="transaction_info_item flex">
+            <div class="tx_title"><b>Transaction hash:</b></div>
+            <div>
+              <a href="#" id="result_tx_hash_link" class="flex" target="_blank">
+                <span id="result_tx_hash" class="break-all"></span>
+                <span class="badge_explorer">View transaction on explorer</span>
+              </a>
+            </div>
+          </div>
+          <div class="transaction_info_item">
+            <div class="tx_title"><b>Namespace share / height info:</b></div>
+            <button class="form_button btn_check_height">Check namespace height value / shares</button>
+            <pre id="check_height_data" class="break-all"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="flex">
+      <div>&copy; Celestia LightNode «PayForBlob»</div>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename= 'js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename= 'js/notify.js') }}"></script>
+</body>
+
+</html>
