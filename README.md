@@ -1,2 +1,0 @@
-# Celestia
-Celestia GUI
